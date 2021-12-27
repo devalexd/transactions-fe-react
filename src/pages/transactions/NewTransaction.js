@@ -52,7 +52,7 @@ const NewTransaction = () => {
     <>
       <form onSubmit={handleCreateTransaction}>
         <div id="new_transaction--name">
-          Name: <input maxLength="100" onChange={(e) => setName(e.target.value)} value={name} required />
+          Name: <input maxLength="120" onChange={(e) => setName(e.target.value)} value={name} required />
         </div>
         <div id="new_transaction--item_id">
           Item Id: <input onChange={(e) => setItemId(e.target.value)} value={itemId} />
