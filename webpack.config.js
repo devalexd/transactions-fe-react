@@ -5,8 +5,8 @@ const dotenv = require('dotenv').config({ path: __dirname + '/.env' });
 
 module.exports = {
   mode: 'development',
-  devServer: {
-    port: 3080,
+  output: {
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -23,7 +23,6 @@ module.exports = {
       }
     ]
   },
-  devtool: 'inline-source-map',
   plugins: [
     new HtmlWebPackPlugin({
       template: "./src/index.html",
@@ -32,5 +31,10 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(dotenv.parsed),
     })
-  ]
+  ],
+  devtool: 'inline-source-map',
+  devServer: {
+    port: 3080,
+    historyApiFallback: true,
+  },
 };
