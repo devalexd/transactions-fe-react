@@ -2,7 +2,8 @@ import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import Select from "../common/Select";
 import { updateTransactionMutation } from '../../../mutations/updateTransaction.mutation';
-import { currencyOptions, unitOptions } from "../../../utils/variables";
+import { currencyOptions, unitOptions } from "../../../utils/options";
+import { getTimezoneByState, formatDateWithTimezoneFromLocaleToUTC } from '../../../utils/date-util';
 
 const TransactionCardEdit = ({ transaction, handleSave }) => {
   const [name, setName] = useState(transaction.name);
@@ -25,6 +26,8 @@ const TransactionCardEdit = ({ transaction, handleSave }) => {
 
   const handleUpdateTransaction = async (e) => {
     e.preventDefault();
+    const timezone = getTimezoneByState(city.slice(-2));
+    const _date = formatDateWithTimezoneFromLocaleToUTC(date, timezone);
     updateTransaction({
       variables: {
         _id: transaction._id,
@@ -32,7 +35,7 @@ const TransactionCardEdit = ({ transaction, handleSave }) => {
         itemId,
         store,
         city,
-        date,
+        date: _date,
         currency: currencyOptions[currencyId],
         price,
         unit: unitOptions[unitId],

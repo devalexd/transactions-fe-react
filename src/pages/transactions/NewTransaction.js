@@ -2,14 +2,15 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import Select from '../../components/elementals/common/Select';
 import { createTransactionMutation } from '../../mutations/createTransaction.mutation';
-import { currencyOptions, unitOptions } from '../../utils/variables';
+import { currencyOptions, unitOptions } from '../../utils/options';
+import { getTimezoneByState, formatDateWithTimezoneFromLocaleToUTC } from '../../utils/date-util';
 
 const NewTransaction = () => {
-  const [name, setName] = useState(undefined);
+  const [name, setName] = useState('');
   const [itemId, setItemId] = useState('');
-  const [store, setStore] = useState(undefined);
-  const [city, setCity] = useState(undefined);
-  const [date, setDate] = useState(undefined);
+  const [store, setStore] = useState('');
+  const [city, setCity] = useState('');
+  const [date, setDate] = useState('');
   const [currencyId, setCurrencyId] = useState(0);
   const [price, setPrice] = useState('0');
   const [unitId, setUnitId] = useState(0);
@@ -25,13 +26,15 @@ const NewTransaction = () => {
 
   const handleCreateTransaction = async (e) => {
     e.preventDefault();
+    const timezone = getTimezoneByState(city.slice(-2));
+    const _date = formatDateWithTimezoneFromLocaleToUTC(date, timezone);
     createTransaction({
       variables: {
         name,
         itemId,
         store,
         city,
-        date,
+        date: _date,
         currency: currencyOptions[currencyId],
         price,
         unit: unitOptions[unitId],

@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { useState } from 'react';
 import { getTransactionByIdQuery } from '../../../queries/getTransaction.query'
-import { getTimezoneByState, formatDateWithTimezone } from '../../../utils/date';
+import { getTimezoneByState, formatDateWithTimezoneFromUTCToLocale } from '../../../utils/date-util';
 
 const TransactionCard = ({ _id, setTransaction: setTransactionParent }) => {
   const [transaction, setTransaction] = useState(undefined);
@@ -14,7 +14,7 @@ const TransactionCard = ({ _id, setTransaction: setTransactionParent }) => {
         _id,
       };
       const timezone = getTimezoneByState(transactionDocument.city.slice(-2));
-      const formattedDate = formatDateWithTimezone(new Date(Number(transactionDocument.date)), timezone);
+      const formattedDate = formatDateWithTimezoneFromUTCToLocale(new Date(Number(transactionDocument.date)), timezone);
       transactionDocument.date = formattedDate;
       setTransaction(transactionDocument);
       setTransactionParent(transactionDocument);
