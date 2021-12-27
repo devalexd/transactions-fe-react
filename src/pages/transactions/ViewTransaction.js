@@ -2,12 +2,12 @@ import TransactionCard from '../../components/elementals/transactions/Transactio
 import TransactionCardEdit from '../../components/elementals/transactions/TransactionCardEdit';
 import Button from '../../components/elementals/common/Button';
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useLocation } from 'react-router-dom';
 
-const ViewTransaction = ({ match }) => {
-  const { _id } = match.params;
-  const navigate = useNavigate();
-  if (!_id) navigate('/error');
+const ViewTransaction = ({ match = {} }) => {
+  const location = useLocation();
+  const { _id = location.pathname.split('/').at(-1) } = match.params ?? {};
+  console.log(_id);
 
   const [isEditing, setIsEditing] = useState(false);
   const [transaction, setTransaction] = useState(undefined);
