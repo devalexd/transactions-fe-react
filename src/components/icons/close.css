@@ -1,0 +1,20 @@
+.icon-close {
+  position: absolute;
+  top: 13px;
+  left: 0;
+  content: "";
+  width: 17px;
+  border-top: 1px solid rgb(185, 185, 185);
+  box-shadow: 0 0 2px 1px lightgray;
+  transform: rotate(45deg);
+}
+
+.icon-close::before {
+  position: absolute;
+  content: "";
+  top: -1px;
+  width: 17px;
+  border-top: 1px solid rgb(185, 185, 185);
+  box-shadow: 0 0 2px 1px lightgray;
+  transform: rotate(90deg);
+}

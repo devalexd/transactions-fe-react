@@ -1,0 +1,24 @@
+.table-cell--transaction_date {
+  grid-column-start: first;
+  grid-column-end: date;
+}
+.table-cell--transaction_name {
+  grid-column-start: date;
+  grid-column-end: name;
+}
+.table-cell--transaction_store {
+  grid-column-start: name;
+  grid-column-end: store;
+}
+.table-cell--transaction_city {
+  grid-column-start: store;
+  grid-column-end: city;
+}
+.table-cell--transaction_cost {
+  grid-column-start: city;
+  grid-column-end: cost;
+}
+.table-cell--transaction_tags {
+  grid-column-start: cost;
+  grid-column-end: end;
+}
