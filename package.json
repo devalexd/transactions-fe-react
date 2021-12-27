@@ -1,7 +1,7 @@
 {
-  "name": "bills-fe-react",
+  "name": "transactions-fe-react",
   "version": "1.0.0",
-  "description": "Front-end of BillsTracker with ReactJS",
+  "description": "Front-end of Transactions App",
   "engines": {
     "node": "17.3.0"
   },
