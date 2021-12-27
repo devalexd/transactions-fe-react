@@ -10,7 +10,7 @@ import ViewTransaction from './pages/transactions/ViewTransaction';
 import TransactionResult from './pages/transactions/TransactionResult';
 
 const client = new ApolloClient({
-  uri: process.env.REACT_APP_SERVER_ENDPOINT,
+  uri: process.env.REACT_APP_ENDPOINT,
   cache: new InMemoryCache(),
 });
 

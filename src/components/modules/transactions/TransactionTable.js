@@ -7,7 +7,6 @@ const TransactionTable = () => {
   const [transactionsList, setTransactionsList] = useState([]);
 
   const { data, loading, error } = useQuery(getAllTransactionsQuery, {
-    variables: { _id: 'fakeId' },
     onCompleted: (response) => setTransactionsList(response.getAllTransactions.documents),
   });
 
