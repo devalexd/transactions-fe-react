@@ -5,6 +5,9 @@ const dotenv = require('dotenv').config({ path: __dirname + '/.env' });
 
 module.exports = {
   mode: 'development',
+  devServer: {
+    port: 3080,
+  },
   module: {
     rules: [
       {

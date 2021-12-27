@@ -6,7 +6,7 @@
     "node": "17.3.0"
   },
   "scripts": {
-    "start": "webpack serve --config webpack.config.js --port 3080",
+    "start": "webpack serve --config webpack.config.js",
     "build": "webpack --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
