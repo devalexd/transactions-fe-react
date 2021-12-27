@@ -91,7 +91,7 @@ const TransactionCardEdit = ({ transaction, handleSave }) => {
         <div id="new_transaction--comment">
           Comment: <input onChange={(e) => setComment(e.target.value)} value={comment} />
         </div>
-        <input type="submit" value="Submit" />
+        <input className="clickable" type="submit" value="Submit" />
       </form>
     </>
   );

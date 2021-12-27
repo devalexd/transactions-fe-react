@@ -7,7 +7,6 @@ import { useLocation } from 'react-router-dom';
 const ViewTransaction = ({ match = {} }) => {
   const location = useLocation();
   const { _id = location.pathname.split('/').at(-1) } = match.params ?? {};
-  console.log(_id);
 
   const [isEditing, setIsEditing] = useState(false);
   const [transaction, setTransaction] = useState(undefined);
