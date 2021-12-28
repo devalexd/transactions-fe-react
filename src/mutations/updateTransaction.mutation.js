@@ -16,7 +16,7 @@ export const updateTransactionMutation = gql`
     $cost: String!
     $comment: String
   ) {
-    createTransaction(
+    replaceTransaction(
       _id: $_id
       name: $name
       itemId: $itemId
