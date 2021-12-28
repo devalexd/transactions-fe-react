@@ -3,8 +3,11 @@ import TransactionCardEdit from '../../components/elementals/transactions/Transa
 import Button from '../../components/elementals/common/Button';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { CommonProps } from '../../types/componentsProps';
 
-const ViewTransaction = ({ match = {} }) => {
+const ViewTransaction = (props: CommonProps) => {
+  const { match = {} } = props;
+
   const location = useLocation();
   const { _id = location.pathname.split('/').at(-1) } = match.params ?? {};
 

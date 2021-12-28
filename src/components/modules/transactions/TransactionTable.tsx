@@ -10,7 +10,7 @@ const TransactionTable = () => {
     onCompleted: (response) => setTransactionsList(response.getAllTransactions.documents),
   });
 
-  if (error) return `Error getting all transactions! ${error.message}`;
+  if (error) return <h1>{`Error getting all transactions! ${error.message}`}</h1>;
 
   return (
     <div>
@@ -18,7 +18,7 @@ const TransactionTable = () => {
       {
         loading
         ?
-        `Loading...`
+        <h1>Loading...</h1>
         :
         transactionsList.map((transaction, index) => (
           <TransactionRow key={`transaction-row_${index}`} transaction={transaction} />

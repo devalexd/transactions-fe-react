@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
+import useForceUpdate from '../../hooks/useForceUpdate';
 import Select from '../../components/elementals/common/Select';
 import { createTransactionMutation } from '../../mutations/createTransaction.mutation';
 import { currencyOptions, unitOptions } from '../../utils/options';
-import { getTimezoneByState, formatDateWithTimezoneFromLocaleToUTC } from '../../utils/date-util';
+import { formatDateByStateFromLocaleToUTC } from '../../utils/date-util';
 
 const NewTransaction = () => {
   const [name, setName] = useState('');
@@ -21,20 +22,19 @@ const NewTransaction = () => {
 
   const [createTransaction, { data, loading, error }] = useMutation(createTransactionMutation);
 
-  if (loading) return 'Submitting...';
-  if (error) return `Submission error! ${error.message}`;
+  if (loading) return <h1>Submitting...</h1>;
+  if (error) return <h1>{`Submission error! ${error.message}`}</h1>;
 
-  const handleCreateTransaction = async (e) => {
+  const handleCreateTransaction = async (e: any) => {
     e.preventDefault();
-    const timezone = getTimezoneByState(city.slice(-2));
-    const _date = formatDateWithTimezoneFromLocaleToUTC(date, timezone);
+    const _date = formatDateByStateFromLocaleToUTC(date, city.slice(-2));
     createTransaction({
       variables: {
         name,
         itemId,
         store,
         city,
-        date: _date,
+        date: _date.toISOString(),
         currency: currencyOptions[currencyId],
         price,
         unit: unitOptions[unitId],
@@ -43,7 +43,7 @@ const NewTransaction = () => {
         cost,
         comment,
       },
-      onCompleted: () => window.location.reload(true),
+      onCompleted: () => useForceUpdate(),
       onError: (e) => console.log(e.message),
     });
   };
@@ -52,22 +52,22 @@ const NewTransaction = () => {
     <>
       <form onSubmit={handleCreateTransaction}>
         <div id="new_transaction--name">
-          Name: <input maxLength="140" onChange={(e) => setName(e.target.value)} value={name} required />
+          Name: <input maxLength={140} onChange={(e) => setName(e.target.value)} value={name} required />
         </div>
         <div id="new_transaction--item_id">
           Item Id: <input onChange={(e) => setItemId(e.target.value)} value={itemId} />
         </div>
         <div id="new_transaction--store">
-          Store: <input maxLength="40" onChange={(e) => setStore(e.target.value)} value={store} required />
+          Store: <input maxLength={40} onChange={(e) => setStore(e.target.value)} value={store} required />
         </div>
         <div id="new_transaction--city">
-          City: <input maxLength="40" onChange={(e) => setCity(e.target.value)} value={city} required />
+          City: <input maxLength={40} onChange={(e) => setCity(e.target.value)} value={city} required />
         </div>
         <div id="new_transaction--date">
           Date: <input type="date" onChange={(e) => setDate(e.target.value)} value={date} required />
         </div>
         <div id="new_transaction--currency">
-          Currency: <Select topic='new_transaction--currency' options={currencyOptions} setId={setCurrencyId} required />
+          Currency: <Select topic='new_transaction--currency' options={currencyOptions} setId={setCurrencyId} />
         </div>
         <div id="new_transaction--price">
           Unit price: <input type="number" onChange={(e) => setPrice(e.target.value)} value={price} required />

@@ -1,6 +1,8 @@
 import { useEffect } from "react";
+import { SelectProps } from "../../../types/componentsProps";
 
-const Select = ({ topic = '', options, setId, defaultId = 0 }) => {
+const Select = (props: SelectProps) => {
+  const { topic = '', options, setId, defaultId = 0 } = props;
   useEffect(() => setId(defaultId), []);
   return (
     <select onChange={(e) => setId(Number(e.target.value))}>

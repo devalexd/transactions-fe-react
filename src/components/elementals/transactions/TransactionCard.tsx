@@ -1,9 +1,12 @@
 import { useQuery } from '@apollo/client';
 import { useState } from 'react';
 import { getTransactionByIdQuery } from '../../../queries/getTransaction.query'
-import { getTimezoneByState, formatDateWithTimezoneFromUTCToLocale } from '../../../utils/date-util';
+import { TransactionCardProps } from '../../../types/componentsProps';
+import { formatDateByStateFromUTCToLocale } from '../../../utils/date-util';
 
-const TransactionCard = ({ _id, setTransaction: setTransactionParent }) => {
+const TransactionCard = (props: TransactionCardProps) => {
+  const { _id, setTransaction: setTransactionParent } = props;
+
   const [transaction, setTransaction] = useState(undefined);
 
   const { data, loading, error } = useQuery(getTransactionByIdQuery, {
@@ -13,15 +16,16 @@ const TransactionCard = ({ _id, setTransaction: setTransactionParent }) => {
         ...response.getTransactionById.document,
         _id,
       };
-      const timezone = getTimezoneByState(transactionDocument.city.slice(-2));
-      const formattedDate = formatDateWithTimezoneFromUTCToLocale(new Date(Number(transactionDocument.date)), timezone);
+      const state = transactionDocument.city.slice(-2);
+      const inputDate = new Date(Number(transactionDocument.date));
+      const formattedDate = formatDateByStateFromUTCToLocale(inputDate, state);
       transactionDocument.date = formattedDate;
       setTransaction(transactionDocument);
       setTransactionParent(transactionDocument);
     },
   });
 
-  if (error) return `Submission error! ${error.message}`;
+  if (error) return <h1>{`Submission error! ${error.message}`}</h1>;
 
   return (
     <div>
