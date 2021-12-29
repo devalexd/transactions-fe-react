@@ -2,7 +2,7 @@ import './style/Tag.css';
 import '../icons/close.css';
 import { useNavigate } from 'react-router';
 
-function handleClickTag (navigate, _id) {
+function handleClickTag (navigate: any, _id: string) {
   if (_id === undefined) {
     navigate(`/error`);
   } else {
@@ -10,8 +10,11 @@ function handleClickTag (navigate, _id) {
   }
 }
 
-const Tag = ({ tag, handleDeleteTag }) => {
+const Tag = (props: TagProps) => {
+  const { tag, handleDeleteTag } = props;
+
   const navigate = useNavigate();
+
   return (
     <div className='tag-container'>
       <span className='tag-first-area' onClick={() => handleClickTag(navigate, tag._id)}>
@@ -22,6 +25,11 @@ const Tag = ({ tag, handleDeleteTag }) => {
       </span>
     </div>
   );
-}
+};
+
+interface TagProps {
+  tag: any,
+  handleDeleteTag: any,
+};
 
 export default Tag;
