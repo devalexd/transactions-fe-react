@@ -8,8 +8,7 @@
   "scripts": {
     "start": "webpack serve --config webpack.config.js",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "lint-fix": "eslint ./src --ext .ts,.tsx --fix && prettier --write **/*.{js,ts,tsx,css,json} --config ./.prettierrc",
     "build": "webpack --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
