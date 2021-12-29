@@ -4,7 +4,7 @@ import Select from "../common/Select";
 import { updateTransactionMutation } from '../../../mutations/updateTransaction.mutation';
 import { currencyOptions, unitOptions } from "../../../utils/options";
 import { formatDateByStateFromLocaleToUTC } from '../../../utils/date-util';
-import { TransactionCardEditProps } from "../../../types/componentsProps";
+import { Transaction } from "../../../types/common";
 
 const TransactionCardEdit = (props: TransactionCardEditProps) => {
   const { transaction, handleSave } = props;
@@ -100,6 +100,11 @@ const TransactionCardEdit = (props: TransactionCardEditProps) => {
       </form>
     </>
   );
-}
+};
+
+interface TransactionCardEditProps {
+  transaction: Transaction,
+  handleSave: () => any,
+};
 
 export default TransactionCardEdit;

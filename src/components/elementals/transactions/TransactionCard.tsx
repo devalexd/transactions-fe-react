@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { useState } from 'react';
 import { getTransactionByIdQuery } from '../../../queries/getTransaction.query'
-import { TransactionCardProps } from '../../../types/componentsProps';
+import { Transaction } from '../../../types/common';
 import { formatDateByStateFromUTCToLocale } from '../../../utils/date-util';
 
 const TransactionCard = (props: TransactionCardProps) => {
@@ -67,6 +67,13 @@ const TransactionCard = (props: TransactionCardProps) => {
       </div>
     </div>
   );
-}
+};
+
+interface TransactionCardProps {
+  _id: string,
+  setTransaction: (
+    arg1: Transaction,
+  ) => any,
+};
 
 export default TransactionCard;

@@ -1,5 +1,5 @@
-import { CommonProps } from "../../../types/componentsProps";
+import { Props } from "../../../types/components";
 
-const Button = (props: CommonProps) => <button className="clickable" type="button" {...props}>{props.text ?? ''}</button>;
+const Button = (props: Props) => <button className="clickable" type="button" {...props}>{props.text ?? ''}</button>;
 
 export default Button;

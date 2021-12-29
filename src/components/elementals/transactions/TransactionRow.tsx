@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import '../style/table-cell.css';
 import './style/TransactionCell.css';
 import { formatDateByStateFromUTCToLocale } from '../../../utils/date-util';
-import { TransactionRowProps } from '../../../types/componentsProps';
+import { Transaction } from '../../../types/common';
 
 const TransactionRow = (props: TransactionRowProps) => {
   const { transaction } = props;
@@ -24,6 +24,10 @@ const TransactionRow = (props: TransactionRowProps) => {
       <span className="table-cell--transaction_cost">${transaction.cost}</span>
     </div>
   );
+};
+
+interface TransactionRowProps {
+  transaction: Transaction,
 };
 
 export default TransactionRow;

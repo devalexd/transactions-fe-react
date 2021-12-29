@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { SelectProps } from "../../../types/componentsProps";
 
 const Select = (props: SelectProps) => {
   const { topic = '', options, setId, defaultId = 0 } = props;
@@ -18,6 +17,15 @@ const Select = (props: SelectProps) => {
       })}
     </select>
   );
-}
+};
+
+interface SelectProps {
+  topic?: string,
+  options: Array<string>,
+  setId: (
+    arg1: number,
+  ) => any,
+  defaultId?: number,
+};
 
 export default Select;

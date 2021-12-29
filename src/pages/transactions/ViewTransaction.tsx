@@ -3,9 +3,9 @@ import TransactionCardEdit from '../../components/elementals/transactions/Transa
 import Button from '../../components/elementals/common/Button';
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { CommonProps } from '../../types/componentsProps';
+import { Props } from '../../types/components';
 
-const ViewTransaction = (props: CommonProps) => {
+const ViewTransaction = (props: Props) => {
   const { match = {} } = props;
 
   const location = useLocation();
