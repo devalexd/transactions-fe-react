@@ -1,9 +1,7 @@
-import TransactionTable from "../../components/modules/transactions/TransactionTable";
+import TransactionTable from '../../components/modules/transactions/TransactionTable';
 
 const TransactionResult = () => {
-  return (
-    <TransactionTable />
-  );
+  return <TransactionTable />;
 };
 
 export default TransactionResult;

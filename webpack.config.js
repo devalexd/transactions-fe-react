@@ -1,6 +1,6 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const webpack = require("webpack");
-const path = require("path");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
 
 const dotenv = require('dotenv').config({ path: __dirname + '/.env' });
 
@@ -16,31 +16,31 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: 'ts-loader'
+        loader: 'ts-loader',
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      }
-    ]
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js' ],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html"
+      template: './src/index.html',
+      filename: './index.html',
     }),
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(dotenv.parsed),
-    })
+    }),
   ],
   devtool: 'inline-source-map',
   devServer: {

@@ -2,10 +2,10 @@ import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate();
-  function navigateCreateTransaction () {
+  function navigateCreateTransaction() {
     navigate('/transaction/new');
   }
-  function navigateShowTransactions () {
+  function navigateShowTransactions() {
     navigate('/transaction/result');
   }
   return (
@@ -14,6 +14,6 @@ const Home = () => {
       <button onClick={navigateShowTransactions}>Show All Transactions</button>
     </>
   );
-}
+};
 
 export default Home;

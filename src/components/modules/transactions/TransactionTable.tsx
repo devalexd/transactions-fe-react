@@ -1,6 +1,6 @@
-import { useQuery } from "@apollo/client";
-import { useState } from "react";
-import { getAllTransactionsQuery } from "../../../queries/getTransaction.query";
+import { useQuery } from '@apollo/client';
+import { useState } from 'react';
+import { getAllTransactionsQuery } from '../../../queries/getTransaction.query';
 import TransactionRow from '../../elementals/transactions/TransactionRow';
 
 const TransactionTable = () => {
@@ -15,15 +15,13 @@ const TransactionTable = () => {
   return (
     <div>
       Transactions:
-      {
-        loading
-        ?
+      {loading ? (
         <h1>Loading...</h1>
-        :
+      ) : (
         transactionsList.map((transaction, index) => (
           <TransactionRow key={`transaction-row_${index}`} transaction={transaction} />
         ))
-      }
+      )}
     </div>
   );
 };

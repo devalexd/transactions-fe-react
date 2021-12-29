@@ -2,9 +2,7 @@ import { gql } from '@apollo/client';
 
 export const getTransactionByIdQuery = gql`
   query ($_id: String!) {
-    getTransactionById(
-      _id: $_id
-    ) {
+    getTransactionById(_id: $_id) {
       success
       message
       document {

@@ -52,43 +52,58 @@ const NewTransaction = () => {
     <>
       <form onSubmit={handleCreateTransaction}>
         <div id="new_transaction--name">
-          Name: <input maxLength={140} onChange={(e) => setName(e.target.value)} value={name} required />
+          Name:{' '}
+          <input maxLength={140} onChange={(e) => setName(e.target.value)} value={name} required />
         </div>
         <div id="new_transaction--item_id">
           Item Id: <input onChange={(e) => setItemId(e.target.value)} value={itemId} />
         </div>
         <div id="new_transaction--store">
-          Store: <input maxLength={40} onChange={(e) => setStore(e.target.value)} value={store} required />
+          Store:{' '}
+          <input maxLength={40} onChange={(e) => setStore(e.target.value)} value={store} required />
         </div>
         <div id="new_transaction--city">
-          City: <input maxLength={40} onChange={(e) => setCity(e.target.value)} value={city} required />
+          City:{' '}
+          <input maxLength={40} onChange={(e) => setCity(e.target.value)} value={city} required />
         </div>
         <div id="new_transaction--date">
-          Date: <input type="date" onChange={(e) => setDate(e.target.value)} value={date} required />
+          Date:{' '}
+          <input type="date" onChange={(e) => setDate(e.target.value)} value={date} required />
         </div>
         <div id="new_transaction--currency">
-          Currency: <Select topic='new_transaction--currency' options={currencyOptions} setId={setCurrencyId} />
+          Currency:{' '}
+          <Select
+            topic="new_transaction--currency"
+            options={currencyOptions}
+            setId={setCurrencyId}
+          />
         </div>
         <div id="new_transaction--price">
-          Unit price: <input type="number" onChange={(e) => setPrice(e.target.value)} value={price} required />
+          Unit price:{' '}
+          <input type="number" onChange={(e) => setPrice(e.target.value)} value={price} required />
         </div>
         <div id="new_transaction--unit">
-          Unit type: <Select topic='new_transaction--unit' options={unitOptions} setId={setUnitId} />
+          Unit type:{' '}
+          <Select topic="new_transaction--unit" options={unitOptions} setId={setUnitId} />
         </div>
-        {
-          unitId === 0
-          ?
-          null
-          :
+        {unitId === 0 ? null : (
           <div id="new_transaction--amount">
-            Amount: <input type="number" onChange={(e) => setAmount(e.target.value)} value={amount} required />
+            Amount:{' '}
+            <input
+              type="number"
+              onChange={(e) => setAmount(e.target.value)}
+              value={amount}
+              required
+            />
           </div>
-        }
+        )}
         <div id="new_transaction--tax">
-          Total tax paid: <input type="number" onChange={(e) => setTax(e.target.value)} value={tax} required />
+          Total tax paid:{' '}
+          <input type="number" onChange={(e) => setTax(e.target.value)} value={tax} required />
         </div>
         <div id="new_transaction--cost">
-          Total money paid: <input type="number" onChange={(e) => setCost(e.target.value)} value={cost} required />
+          Total money paid:{' '}
+          <input type="number" onChange={(e) => setCost(e.target.value)} value={cost} required />
         </div>
         <div id="new_transaction--comment">
           Comment: <input onChange={(e) => setComment(e.target.value)} value={comment} />
@@ -96,7 +111,7 @@ const NewTransaction = () => {
         <input className="clickable" type="submit" value="Submit" />
       </form>
     </>
-  )
+  );
 };
 
 export default NewTransaction;

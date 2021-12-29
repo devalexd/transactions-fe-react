@@ -27,22 +27,18 @@ const ViewTransaction = (props: Props) => {
   return (
     <div>
       <div>
-        {
-          isEditing
-          ?
+        {isEditing ? (
           <Button onClick={switchToView} text="Cancel"></Button>
-          :
+        ) : (
           <Button onClick={switchToEdit} text="Edit"></Button>
-        }
+        )}
       </div>
       <div>
-        {
-          isEditing
-          ?
+        {isEditing ? (
           <TransactionCardEdit transaction={transaction} handleSave={handleSave} />
-          :
+        ) : (
           <TransactionCard _id={_id} setTransaction={setTransaction} />
-        }
+        )}
       </div>
     </div>
   );

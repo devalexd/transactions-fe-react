@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { useState } from 'react';
-import { getTransactionByIdQuery } from '../../../queries/getTransaction.query'
+import { getTransactionByIdQuery } from '../../../queries/getTransaction.query';
 import { Transaction } from '../../../types/common';
 import { formatDateByStateFromUTCToLocale } from '../../../utils/date-util';
 
@@ -29,51 +29,25 @@ const TransactionCard = (props: TransactionCardProps) => {
 
   return (
     <div>
-      <div>
-        Name: {transaction?.name ?? 'Loading...'}
-      </div>
-      <div>
-        Item Id: {transaction?.itemId ?? 'Loading...'}
-      </div>
-      <div>
-        Store: {transaction?.store ?? 'Loading...'}
-      </div>
-      <div>
-        City: {transaction?.city ?? 'Loading...'}
-      </div>
-      <div>
-        Date: {transaction?.date ?? 'Loading...'}
-      </div>
-      <div>
-        Currency: {transaction?.currency ?? 'Loading...'}
-      </div>
-      <div>
-        Unit price: {transaction?.price ?? 'Loading...'}
-      </div>
-      <div>
-        Unit type: {transaction?.unit ?? 'Loading...'}
-      </div>
-      <div>
-        Amount: {transaction?.amount ?? 'Loading...'}
-      </div>
-      <div>
-        Total tax paid: {transaction?.tax ?? 'Loading...'}
-      </div>
-      <div>
-        Total money paid: {transaction?.cost ?? 'Loading...'}
-      </div>
-      <div>
-        Comment: {transaction?.comment ?? 'Loading...'}
-      </div>
+      <div>Name: {transaction?.name ?? 'Loading...'}</div>
+      <div>Item Id: {transaction?.itemId ?? 'Loading...'}</div>
+      <div>Store: {transaction?.store ?? 'Loading...'}</div>
+      <div>City: {transaction?.city ?? 'Loading...'}</div>
+      <div>Date: {transaction?.date ?? 'Loading...'}</div>
+      <div>Currency: {transaction?.currency ?? 'Loading...'}</div>
+      <div>Unit price: {transaction?.price ?? 'Loading...'}</div>
+      <div>Unit type: {transaction?.unit ?? 'Loading...'}</div>
+      <div>Amount: {transaction?.amount ?? 'Loading...'}</div>
+      <div>Total tax paid: {transaction?.tax ?? 'Loading...'}</div>
+      <div>Total money paid: {transaction?.cost ?? 'Loading...'}</div>
+      <div>Comment: {transaction?.comment ?? 'Loading...'}</div>
     </div>
   );
 };
 
 interface TransactionCardProps {
-  _id: string,
-  setTransaction: (
-    arg1: Transaction,
-  ) => any,
-};
+  _id: string;
+  setTransaction: (arg1: Transaction) => any;
+}
 
 export default TransactionCard;
