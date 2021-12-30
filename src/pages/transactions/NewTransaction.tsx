@@ -43,7 +43,7 @@ const NewTransaction = () => {
         cost,
         comment,
       },
-      onCompleted: () => useForceUpdate(),
+      onCompleted: () => window.location.reload(),
       onError: (e) => console.log(e.message),
     });
   };
