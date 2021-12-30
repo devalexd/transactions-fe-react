@@ -8,7 +8,7 @@ const TransactionRow = (props: TransactionRowProps) => {
   const { transaction } = props;
 
   const state = transaction.city.slice(-2);
-  const inputDate = new Date(Number(transaction.date));
+  const date = new Date(transaction.date);
 
   const navigate = useNavigate();
   const handleRedirect = () => {
@@ -18,7 +18,7 @@ const TransactionRow = (props: TransactionRowProps) => {
   return (
     <div className="table-cell-container clickable hover-shadow-box" onClick={handleRedirect}>
       <span className="table-cell--transaction_date">
-        {formatDateByStateFromUTCToLocale(inputDate, state)}
+        {formatDateByStateFromUTCToLocale(date, state)}
       </span>
       <span className="table-cell--transaction_name">{transaction.name}</span>
       <span className="table-cell--transaction_store">{transaction.store}</span>

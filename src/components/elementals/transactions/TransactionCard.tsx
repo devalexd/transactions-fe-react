@@ -17,8 +17,8 @@ const TransactionCard = (props: TransactionCardProps) => {
         _id,
       };
       const state = transactionDocument.city.slice(-2);
-      const inputDate = new Date(Number(transactionDocument.date));
-      const formattedDate = formatDateByStateFromUTCToLocale(inputDate, state);
+      const date = new Date(transactionDocument.date);
+      const formattedDate = formatDateByStateFromUTCToLocale(date, state);
       transactionDocument.date = formattedDate;
       setTransaction(transactionDocument);
       setTransactionParent(transactionDocument);
